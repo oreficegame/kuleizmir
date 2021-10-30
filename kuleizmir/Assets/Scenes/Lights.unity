@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 29352258}
   m_Layer: 0
   m_Name: kisspng-pixel-art-game-sprite-8-bit-5ac8e6a39a3988.2271322315231156836317
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -328,6 +328,8 @@ GameObject:
   - component: {fileID: 1220853923}
   - component: {fileID: 1220853925}
   - component: {fileID: 1220853924}
+  - component: {fileID: 1220853926}
+  - component: {fileID: 1220853927}
   m_Layer: 0
   m_Name: PikPng.com_mario-bross-png_5473499
   m_TagString: Untagged
@@ -350,7 +352,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 8
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -396,7 +398,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f4029c466fa1385459938dc08d085abc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9e50046e21eb44e4086e5a59274abdf7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -438,7 +440,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.45, y: 5.93}
+    oldSize: {x: 8, y: 8}
     newSize: {x: 4.45, y: 5.93}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -501,6 +503,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   limon: 1
+--- !u!114 &1220853926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220853919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d260bdef0ca5a641a086b9d0ff35cb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveforce: 10
+  jumpforce: 22
+  movmentX: 0
+--- !u!95 &1220853927
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220853919}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d66cdf100d2127846bbd5be1a3e4f21a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1886570432
 GameObject:
   m_ObjectHideFlags: 0
