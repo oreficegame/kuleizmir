@@ -7,11 +7,19 @@ public class Move : MonoBehaviour
     public float moveforce = 10f;
     public float jumpforce = 22f;
     public float movmentX;
+    public float nextJumpTime;
+    public float JumpFrequency = 0.1f;
     //public bool isGrounded;
     private Rigidbody2D myBody;
     private SpriteRenderer sf;
     private Animator anim;
     private string WALK_ANIMATION = "walk";
+
+    public Transform groundCheckPosition;
+    public float groundCheckRadius;
+    public LayerMask groundCheckLayer;
+
+    public bool isGrounded = false;
 
     private void Awake()
     {
@@ -25,6 +33,7 @@ public class Move : MonoBehaviour
     void Update()
     {
         PlayerMoveKeyboard();
+        OnGroundCheck();
         PlayerJump();
     }
     void PlayerMoveKeyboard()
@@ -35,9 +44,13 @@ public class Move : MonoBehaviour
 
     void PlayerJump()
     {
-        if (Input.GetButtonDown("Jump"))
+
+
+        if (Input.GetButtonDown("Jump") && isGrounded && (nextJumpTime < Time.timeSinceLevelLoad))
         {
+            nextJumpTime = Time.timeSinceLevelLoad + JumpFrequency;
             myBody.AddForce(new Vector2(0f, jumpforce), ForceMode2D.Impulse);
+
         }
     }
     void AnimatePlayer()
@@ -57,19 +70,23 @@ public class Move : MonoBehaviour
             anim.SetBool(WALK_ANIMATION, false);
         }
     }
+
+   private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
+    }
+
+    void OnGroundCheck()
+    {
+        isGrounded = Physics2D.OverlapCircle(groundCheckPosition.position, groundCheckRadius, groundCheckLayer);
+    }
 }
 
 
-
-//    private void OnCollisionEnter2D(Collision2D collision)
-//    {
-//        if (collision.gameObject.CompareTag("Ground"))
-//        {
-//            isGrounded = true;
-//        }
-//        else
-//        {
-//            isGrounded = false;
-//        }
-//    }
-//}
